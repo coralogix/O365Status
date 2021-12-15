@@ -18,9 +18,9 @@ Resources:
       ReservedConcurrentExecutions: 1
       Environment:
         Variables:
-          PRIVATE_KEY: "be1fe366-ed73-a842-bb3e-74fa24c1c3fe"
+          PRIVATE_KEY: "PRIVATE_KEY"
           APPLICATION_NAME: "Office"
           SUBSYSTEM_NAME: "Health"
-          CLIENT_ID: "f3d76b81-f157-4866-8734-54d12e060c0c"
-          CLIENT_SECRET: "NfZ7Q~9noBgKNJphucZPfwHwI_tEvrDXKnFYa"
-          TENANT: "615ce5b1-8205-484a-aaf2-9395b8ecec32"
+          CLIENT_ID: "CLIENT_ID"
+          CLIENT_SECRET: "CLIENT_SECRET"
+          TENANT: "TENANT"
