@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Office365 Health.
+  An app to fetch O365 Health Status and push it to Coralogix
+
+Globals:
+  Function:
+    Timeout: 900
+    MemorySize: 1024
+Resources:
+  O365HealthChecker:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: o365_healthstatus_lambda_app/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      ReservedConcurrentExecutions: 1
+      Environment:
+        Variables:
+          PRIVATE_KEY: "be1fe366-ed73-a842-bb3e-74fa24c1c3fe"
+          APPLICATION_NAME: "Office"
+          SUBSYSTEM_NAME: "Health"
+          CLIENT_ID: "f3d76b81-f157-4866-8734-54d12e060c0c"
+          CLIENT_SECRET: "NfZ7Q~9noBgKNJphucZPfwHwI_tEvrDXKnFYa"
+          TENANT: "615ce5b1-8205-484a-aaf2-9395b8ecec32"
