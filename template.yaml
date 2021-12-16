@@ -19,8 +19,7 @@ Resources:
       Environment:
         Variables:
           PRIVATE_KEY: "PRIVATE_KEY"
-          APPLICATION_NAME: "Office"
-          SUBSYSTEM_NAME: "Health"
+          CORALOGIX_LOG_URL: "https://api.coralogix.com/api/v1/logs"
           CLIENT_ID: "CLIENT_ID"
           CLIENT_SECRET: "CLIENT_SECRET"
           TENANT: "TENANT"
