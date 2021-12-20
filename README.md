@@ -13,12 +13,11 @@ Author: Juan "Trindium" Gimenez (juan@coralogix.com)
     b. Coralogix Account
     c. AWS Access with the ability to deploy new Lambdas thru SAM
 
-4. Instructions:
-    a. 
-    b. Run sam build
-    c. Run sam deploy --guided
-    d. You will be able to see the new Lambda Function in AWS.
-    e. Go into the new Lambda Function Configuration and set up the Envirment Variables 
+4. Instructions: 
+    a. Run sam build
+    b. Run sam deploy --guided
+    c. You will be able to see the new Lambda Function in AWS.
+    d. Go into the new Lambda Function Configuration and set up the Envirment Variables 
         APPLICATION_NAME
         SUBSYSTEM_NAME
         CLIENT_ID #This is Azure Registered Application ID
