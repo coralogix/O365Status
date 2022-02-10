@@ -20,8 +20,9 @@ def lambda_handler(event,context):
     #Set up logger objects
     logger = logging.getLogger("Python Logger")
     logger.setLevel(logging.DEBUG)  
-    coralogix_handler = CoralogixLogger(PRIVATE_KEY, APP_NAME, SUB_SYSTEM)
-    logger.addHandler(coralogix_handler)
+    if not logger.handlers:        
+        coralogix_handler = CoralogixLogger(PRIVATE_KEY, APP_NAME, SUB_SYSTEM)
+        logger.addHandler(coralogix_handler)
     
     payload = 'client_id='+CLIENT_ID+'&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret='+CLIENT_SECRET+'&grant_type=client_credentials'
     rqst = requests.post('https://login.microsoftonline.com/'+TENANT+'/oauth2/v2.0/token', data = payload)
