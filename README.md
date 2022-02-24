@@ -43,6 +43,9 @@ SG Cluster ( coralogixsg.com )
 ####
     CORALOGIX_LOG_URL: "https://api.coralogixsg.com/api/v1/logs"
 
+# Service Status:
+For Reference on possible Microsoft Service Health status check https://docs.microsoft.com/en-us/graph/api/resources/servicehealthissue?view=graph-rest-1.0#servicehealthstatus-values
+
 # Comments and Collaboration:
 If you have any Comment or Collaboration, please use github issue, create a pull request or just comment us in our Support Chat inside your Coralogix Account
 Any suggestion will be much appriciated 
