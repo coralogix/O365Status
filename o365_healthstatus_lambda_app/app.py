@@ -48,7 +48,7 @@ def lambda_handler(event,context):
                     "Context" : json.loads(status.content)["@odata.context"],
                     "Service" : element["service"],
                     "Status" : element["status"],
-                    "OnGoing Issue" : last_issue,
+                    "Last Issue" : last_issue,
                     "Id" : element["id"]
                 }
             str = json.dumps(log)
