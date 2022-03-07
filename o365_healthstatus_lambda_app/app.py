@@ -28,17 +28,40 @@ def lambda_handler(event,context):
     rqst = requests.post('https://login.microsoftonline.com/'+TENANT+'/oauth2/v2.0/token', data = payload)
     token = json.loads(rqst.content)["access_token"]
 
-    status = requests.get('https://graph.microsoft.com/v1.0/admin/serviceAnnouncement/healthOverviews',
+    status = requests.get('https://graph.microsoft.com/v1.0/admin/serviceAnnouncement/healthOverviews?$expand=issues',
                     headers = { 'content-type': 'application/json', 'Authorization': "Bearer " + token}
                     )
     for element in json.loads(status.content)["value"]:
-        
-        log = {
-            "Context" : json.loads(status.content)["@odata.context"],
-            "Service" : element["service"],
-            "Status" : element["status"],
-            "Id" : element["id"]
-        }
-        str = json.dumps(log)
-        logger.info(str)
+        try:
+            last_issue = element["issues"][-1]
+            del last_issue['posts'] 
+            if not last_issue["endDateTime"]:
+                log = {
+                    "Context" : json.loads(status.content)["@odata.context"],
+                    "Service" : element["service"],
+                    "Status" : element["status"],
+                    "OnGoing Issue" : last_issue,
+                    "Id" : element["id"]
+                }
+            else:
+                log = {
+                    "Context" : json.loads(status.content)["@odata.context"],
+                    "Service" : element["service"],
+                    "Status" : element["status"],
+                    "Last Issue" : last_issue,
+                    "Id" : element["id"]
+                }
+            str = json.dumps(log)
+            logger.info(str)
+            
+
+        except IndexError:
+            log = {
+                "Context" : json.loads(status.content)["@odata.context"],
+                "Service" : element["service"],
+                "Status" : element["status"],
+                "Id" : element["id"]
+            }
+            str = json.dumps(log)
+            logger.info(str)
         CoralogixLogger.flush_messages()
